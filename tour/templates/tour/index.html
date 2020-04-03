@@ -1,0 +1,841 @@
+{% load static %}
+{% load temp_extras %}
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <title>ТФЧелГУ</title>
+    <link rel="stylesheet" type="text/css" href={% static 'tour/slick/slick.css' %}/>
+    <link rel="stylesheet" type="text/css" href={% static 'tour/slick/slick-theme.css' %}/>
+    <link rel="stylesheet" href={% static 'tour/css/main.css' %}>
+    <link rel="stylesheet" href={% static 'tour/css/hint.min.css' %}>
+    <script type="text/javascript" src={% static 'tour/js/jquery-3.4.1.min.js' %}></script>
+    <script type="text/javascript" src={% static 'tour/slick/slick.min.js' %}></script>
+    <script type="text/javascript" src={% static 'tour/js/main.js' %}></script>
+    <script type="text/javascript" src={% static 'tour/js/slide.js' %}></script>
+    
+</head>
+<body>
+
+<section class="container">
+
+    <div class="menu">
+        <ul>
+            <li>Быстрое перемещение
+                <ul>
+                    <li><a id="menu_street-all" href="#">Улица</a></li>
+                    <li><a id="menu_library-coridor-2" href="#">Библиотека</a></li>
+                    <li><a id="menu_hallway" href="#">Столовая</a></li>
+                    <li><a id="menu_admins" href="#">Учебная часть</a></li>
+                    <li><a id="menu_a210" href="#">210 ауд.</a></li>
+                    <li><a id="menu_mey3" href="#">Кафедра МЭУ</a></li>
+                    <li><a id="menu_urists2" href="#">Кафедра права</a></li>
+                    <li><a id="menu_psychologists3" href="#">Кафедра психологии</a></li>
+                    <li><a id="menu_near-gym" href="#">2 выход</a></li>
+                </ul>
+            </li>
+        </ul>
+    </div>
+
+
+    <div class="fix">
+        <div class="start">
+            <a id="btn" href="#" class="btn">Начать тур</a>
+        </div>
+    </div>
+
+    <div class="img street-all"
+         style="background: url({{ 1|retlink:'Улица' }}) no-repeat center center; background-size: cover;">
+        <div data-hint="Библиотека" id="street-all_street-library" class="arrow hint--top hint--error">
+            <img src={% static 'tour/img/left-arrow.svg' %} alt="">
+        </div>
+        <div data-hint="Вход в Тф «ЧелГУ»" id="street-all_street_entry" class="arrow hint--top hint--error">
+            <img src={% static 'tour/img/right-arrow.svg' %} alt="">
+        </div>
+    </div>
+
+    <div class="img street-library"
+         style="background: url({{ 1|retlink:'Библиотека вход' }}) no-repeat center center; background-size: cover; display: none;">
+        <div data-hint="Войти в библиотеку" id="street-library_library-coridor-1" class="arrow hint--top hint--error">
+            <img src={% static 'tour/img/up-arrow.svg' %} alt="">
+        </div>
+        <div data-hint="Улица" id="street-library_street-all" class="arrow hint--top hint--error">
+            <img src={% static 'tour/img/left-arrow.svg' %} alt="">
+        </div>
+        <div data-hint="Вход в Тф «ЧелГУ»" id="street-library_street_entry" class="arrow hint--top hint--error">
+            <img src={% static 'tour/img/right-arrow.svg' %} alt="">
+        </div>
+    </div>
+
+    <div class="img library-coridor-1"
+         style="background: url({{ 1|retlink:'Библиотека коридор' }}) no-repeat center center; background-size: cover; display: none;">
+        <div data-hint="На улицу" id="library-coridor-1_street-library" class="arrow hint--top hint--error">
+            <img src={% static 'tour/img/right-arrow.svg' %} alt="">
+        </div>
+        <div data-hint="Дальше" id="library-coridor-1_library-coridor-2" class="arrow hint--top hint--error">
+            <img src={% static 'tour/img/up-arrow.svg' %} alt="">
+        </div>
+    </div>
+
+    <div class="img library-coridor-2"
+         style="background: url({{ 1|retlink:'Коридор библиотека 2' }}) no-repeat center center; background-size: cover; display: none;">
+        <div data-hint="Библиотека" id="library-coridor-2_library" class="arrow hint--top hint--error">
+            <img src={% static 'tour/img/sun.svg' %} alt="">
+        </div>
+        <div data-hint="6 ауд." id="library-coridor-2_a6" class="arrow hint--top hint--error">
+            <img src={% static 'tour/img/sun.svg' %} alt="">
+        </div>
+        <div data-hint="Назад" id="library-coridor-2_library-coridor-1" class="arrow hint--top hint--error">
+            <img src={% static 'tour/img/down-arrow.svg' %} alt="">
+        </div>
+    </div>
+
+    <div class="overlay a6" style="visibility: hidden">
+        <div class="main a6-photo" style="visibility: hidden">
+            <div class="sl">
+                <div class="sl__slide" style="background: url({{ 1|retlink:'6 1' }})
+                        no-repeat center center; background-size: cover;">
+                </div>
+                <div class="sl__slide" style="background: url({{ 1|retlink:'6 2' }})
+                        no-repeat center center; background-size: cover;">
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="overlay library" style="visibility: hidden">
+        <div class="main library-photo" style="visibility: hidden">
+            <div class="sl">
+                <div class="sl__slide" style="background: url({{ 1|retlink:'Библиотека 1' }})
+                        no-repeat center center; background-size: cover;">
+                </div>
+                <div class="sl__slide" style="background: url({{ 1|retlink:'Библиотека 2' }})
+                        no-repeat center center; background-size: cover;">
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="img street_entry"
+         style="background: url({{ 1|retlink:'Вход универа' }}) no-repeat center center; background-size: cover; display: none;">
+        <div data-hint="Улица" id="street_entry_street-all" class="arrow hint--top hint--error">
+            <img src={% static 'tour/img/down-arrow.svg' %} alt="">
+        </div>
+        <div data-hint="Библиотека" id="street_entry_street-library" class="arrow hint--top hint--error">
+            <img src={% static 'tour/img/down-arrow.svg' %} alt="">
+        </div>
+        <div data-hint="Войти в Тф «ЧелГУ»" id="street_entry_watch" class="arrow hint--top hint--error">
+            <img src={% static 'tour/img/up-arrow.svg' %} alt="">
+        </div>
+    </div>
+
+    <div class="img watch"
+         style="background: url({{ 1|retlink:'Вахта' }}) no-repeat center center; background-size: cover; display: none;">
+        <div data-hint="Вход в Тф «ЧелГУ»" id="watch_street_entry" class="arrow hint--top hint--error">
+            <img src={% static 'tour/img/down-arrow.svg' %} alt="">
+        </div>
+        <div data-hint="Актовый зал" id="watch_assembly-hall" class="arrow hint--top hint--error">
+            <img src={% static 'tour/img/right-arrow.svg' %} alt="">
+        </div>
+        <div data-hint="Фае" id="watch_hallway" class="arrow hint--top hint--error">
+            <img src={% static 'tour/img/left-arrow.svg' %} alt="">
+        </div>
+        <div data-hint="2 этаж" id="watch_second-floor" class="arrow hint--top hint--error">
+            <img src={% static 'tour/img/up-arrow.svg' %} alt="">
+        </div>
+    </div>
+
+    <div class="img assembly-hall"
+         style="background: url({{ 1|retlink:'Актовый зал' }}) no-repeat center center; background-size: cover; display: none;">
+        <div data-hint="Вахта" id="assembly-hall_watch" class="arrow hint--top hint--error">
+            <img src={% static 'tour/img/down-arrow.svg' %} alt="">
+        </div>
+        <div data-hint="Место" id="assembly-hall_hall2" class="arrow hint--top hint--error">
+            <img src={% static 'tour/img/sun.svg' %} alt="">
+        </div>
+
+        <div data-hint="102 ауд." id="assembly-hall_a102-2" class="arrow hint--top hint--error">
+            <img src={% static 'tour/img/left-arrow.svg' %} alt="">
+        </div>
+    </div>
+
+    <div class="overlay assembly-hall2" style="visibility: hidden">
+        <div class="main zal" style="visibility: hidden">
+            <div class="sl">
+                <div class="sl__slide" style="background: url({{ 1|retlink:'Актовый зал 2' }})
+                        no-repeat center center; background-size: cover;">
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="img hallway"
+         style="background: url({{ 1|retlink:'Фае' }}) no-repeat center center; background-size: cover; display: none;">
+        <div data-hint="Столовая" id="hallway_kitchen" class="arrow hint--top hint--error">
+            <img src={% static 'tour/img/sun.svg' %} alt="">
+        </div>
+        <div data-hint="Гардероб" id="hallway_wardrobe" class="pusto arrow hint--top hint--error">
+            <img src={% static 'tour/img/sun.svg' %} alt="">
+        </div>
+        <div data-hint="Туалет Ж." id="hallway_restroom-woomen" class="pusto arrow hint--top hint--error">
+            <img src={% static 'tour/img/sun.svg' %} alt="">
+        </div>
+        <div data-hint="Туалет М." id="hallway_restroom-men" class="pusto arrow hint--top hint--error">
+            <img src={% static 'tour/img/sun.svg' %} alt="">
+        </div>
+        <div data-hint="Плакаты" id="hallway_poster" class="arrow hint--top hint--error">
+            <img src={% static 'tour/img/sun.svg' %} alt="">
+        </div>
+        <div data-hint="Вахта" id="hallway_watch" class="arrow hint--top hint--error">
+            <img src={% static 'tour/img/right-arrow.svg' %} alt="">
+        </div>
+    </div>
+
+    <div class="overlay kitchen" style="visibility: hidden">
+        <div class="main kitchen-photo" style="visibility: hidden">
+            <div class="sl">
+                <div class="sl__slide" style="background: url({{ 1|retlink:'Столовая 1' }})
+                        no-repeat center center; background-size: cover;">
+                </div>
+                <div class="sl__slide" style="background: url({{ 1|retlink:'Столовая 2' }})
+                        no-repeat center center; background-size: cover;">
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="overlay poster" style="visibility: hidden">
+        <div class="main sl-poster" style="visibility: hidden">
+            <div class="sl">
+                <div class="sl__slide" style="background: url({{ 1|retlink:'Фае фото 1' }})
+                        no-repeat center center; background-size: cover;">
+                </div>
+                <div class="sl__slide" style="background: url({{ 1|retlink:'Фае фото 2' }})
+                        no-repeat center center; background-size: cover;">
+                </div>
+                <div class="sl__slide" style="background: url({{ 1|retlink:'Фае фото 3' }})
+                        no-repeat center center; background-size: cover;">
+                </div>
+                <div class="sl__slide" style="background: url({{ 1|retlink:'Фае фото 4' }})
+                        no-repeat center center; background-size: cover;">
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <div class="img second-floor"
+         style="background: url({{ 1|retlink:'2 этаж' }}) no-repeat center center; background-size: cover; display: none;">
+        <div data-hint="Административный корпус" id="second-floor_admmins" class="arrow hint--top hint--error">
+            <img src={% static 'tour/img/left-arrow.svg' %} alt="">
+        </div>
+        <div data-hint="210 ауд." id="second-floor_a210" class="arrow hint--top hint--error">
+            <img src={% static 'tour/img/right-arrow.svg' %} alt="">
+        </div>
+        <div data-hint="1 этаж" id="second-floor_watch" class="arrow hint--top hint--error">
+            <img src={% static 'tour/img/down-arrow.svg' %} alt="">
+        </div>
+    </div>
+
+    <div class="img admins"
+         style="background: url({{ 1|retlink:'Административный корпус' }}) no-repeat center center; background-size: cover; display: none;">
+        <div data-hint="Учебная часть" id="admins_a206" class="arrow hint--top hint--error">
+            <img src={% static 'tour/img/sun.svg' %} alt="">
+        </div>
+        <div data-hint="Дальше" id="admins_admins2" class="arrow hint--top hint--error">
+            <img src={% static 'tour/img/right-arrow.svg' %} alt="">
+        </div>
+        <div data-hint="Оранжерея" id="admins_flowers" class="arrow hint--top hint--error">
+            <img src={% static 'tour/img/sun.svg' %} alt="">
+        </div>
+        <div data-hint="2 этаж" id="admins_second-floor" class="arrow hint--top hint--error">
+            <img src={% static 'tour/img/down-arrow.svg' %} alt="">
+        </div>
+    </div>
+
+    <div class="overlay a206" style="visibility: hidden">
+        <div class="main a206-photo" style="visibility: hidden">
+            <div class="sl">
+                <div class="sl__slide" style="background: url({{ 1|retlink:'Учебная часть' }})
+                        no-repeat center center; background-size: cover;">
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="overlay flowers" style="visibility: hidden">
+        <div class="main admins_flowers" style="visibility: hidden">
+            <div class="sl">
+                <div class="sl__slide" style="background: url({{ 1|retlink:'Оранжерея' }})
+                        no-repeat center center; background-size: cover;">
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="img admins2"
+         style="background: url({{ 1|retlink:'Административный корпус 2' }}) no-repeat center center; background-size: cover; display: none;">
+        <div data-hint="Вернуться" id="admins2_admins" class="arrow hint--top hint--error">
+            <img src={% static 'tour/img/down-arrow.svg' %} alt="">
+        </div>
+        <div data-hint="Для абитуриента" id="admins2_link" class="arrow hint--top hint--error">
+            <a href="https://vk.com/" target="_blank">
+                <img src={% static 'tour/img/link.svg' %} alt="">
+            </a>
+        </div>
+        <div data-hint="209 ауд." id="admins2_a209" class="arrow hint--top hint--error">
+            <img src={% static 'tour/img/sun.svg' %} alt="">
+        </div>
+        <div data-hint="Лестница к 101 ауд. и 102 ауд." id="admins2_a101-a102" class="pusto arrow hint--top hint--error">
+            <img src={% static 'tour/img/left-arrow.svg' %} alt="">
+        </div>
+        <div data-hint="ЦДПО" id="admins2_a205" class="arrow hint--top hint--error">
+            <img src={% static 'tour/img/sun.svg' %} alt="">
+        </div>
+        <div data-hint="208 ауд." id="admins2_a208" class="arrow hint--top hint--error">
+            <img src={% static 'tour/img/sun.svg' %} alt="">
+        </div>
+        <div data-hint="Дальше" id="admins2_admins3" class="arrow hint--top hint--error">
+            <img src={% static 'tour/img/up-arrow.svg' %} alt="">
+        </div>
+    </div>
+
+
+    <div class="img a101-a102"
+         style="background: url({{ 1|retlink:'Лестница к 101' }}) no-repeat center center; background-size: cover; display: none;">
+        <div data-hint="Вернуться" id="a101-a102_admins2" class="arrow hint--top hint--error">
+            <img src={% static 'tour/img/up-arrow.svg' %} alt="">
+        </div>
+        <div data-hint="102 ауд." id="a101-a102_a102-1" class="arrow hint--top hint--error">
+            <img src={% static 'tour/img/left-arrow.svg' %} alt="">
+        </div>
+        <div data-hint="101 ауд." id="a101-a102_a101" class="arrow hint--top hint--error">
+            <img src={% static 'tour/img/sun.svg' %} alt="">
+        </div>
+    </div>
+
+    <div class="img a102-1"
+         style="background: url({{ 1|retlink:'102 1' }}) no-repeat center center; background-size: cover; display: none;">
+        <div data-hint="Вернуться" id="a102-1_a101-a102" class="arrow hint--top hint--error">
+            <img src={% static 'tour/img/down-arrow.svg' %} alt="">
+        </div>
+        <div data-hint="Актовый зал" id="a102-1_assembly-hall" class="arrow hint--top hint--error">
+            <img src={% static 'tour/img/left-arrow.svg' %} alt="">
+        </div>
+    </div>
+
+    <div class="img a102-2"
+         style="background: url({{ 1|retlink:'102 2' }}) no-repeat center center; background-size: cover; display: none;">
+        <div data-hint="Лестница к 101 и 102 ауд." id="a102-2_a101-a102" class="arrow hint--top hint--error">
+            <img src={% static 'tour/img/up-arrow.svg' %} alt="">
+        </div>
+        <div data-hint="Вернуться" id="a102-2_assembly-hall" class="arrow hint--top hint--error">
+            <img src={% static 'tour/img/right-arrow.svg' %} alt="">
+        </div>
+    </div>
+
+
+    <div class="overlay a205" style="visibility: hidden">
+        <div class="main a205-photo" style="visibility: hidden">
+            <div class="sl">
+                <div class="sl__slide" style="background: url({{ 1|retlink:'ЦДПО' }})
+                        no-repeat center center; background-size: cover;">
+                </div>
+            </div>
+        </div>
+    </div>
+
+        <div class="overlay a101" style="visibility: hidden">
+        <div class="main a101-photo" style="visibility: hidden">
+            <div class="sl">
+                <div class="sl__slide" style="background: url({{ 1|retlink:'101' }})
+                        no-repeat center center; background-size: cover;">
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <div class="overlay a209" style="visibility: hidden">
+        <div class="main a209-photo" style="visibility: hidden">
+            <div class="sl">
+                <div class="sl__slide" style="background: url({{ 1|retlink:'209 1' }})
+                        no-repeat center center; background-size: cover;">
+                </div>
+                <div class="sl__slide" style="background: url({{ 1|retlink:'209 2' }})
+                        no-repeat center center; background-size: cover;">
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="overlay a208" style="visibility: hidden">
+        <div class="main a208-photo" style="visibility: hidden">
+            <div class="sl">
+                <div class="sl__slide" style="background: url({{ 1|retlink:'208 1' }})
+                        no-repeat center center; background-size: cover;">
+                </div>
+                <div class="sl__slide" style="background: url({{ 1|retlink:'208 2' }})
+                        no-repeat center center; background-size: cover;">
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="img admins3"
+         style="background: url({{ 1|retlink:'Административный корпус 3' }}) no-repeat center center; background-size: cover; display: none;">
+        <div data-hint="Вернуться" id="admins3_admins2" class="arrow hint--top hint--error">
+            <img src={% static 'tour/img/down-arrow.svg' %} alt="">
+        </div>
+        <div data-hint="Зам. директора (восп. часть)" id="admins3_a204" class="pusto arrow hint--top hint--error">
+            <img src={% static 'tour/img/left-arrow.svg' %} alt="">
+        </div>
+        <div data-hint="Приёмная директора" id="admins3_a203" class="arrow hint--top hint--error">
+            <img src={% static 'tour/img/up-arrow.svg' %} alt="">
+        </div>
+        <div data-hint="207 ауд." id="admins3_a207" class="pusto arrow hint--top hint--error">
+            <img src={% static 'tour/img/right-arrow.svg' %} alt="">
+        </div>
+    </div>
+
+    <div class="overlay a207" style="visibility: hidden">
+        <div class="main a207-photo" style="visibility: hidden">
+            <div class="sl">
+                <div class="sl__slide" style="background: url({{ 1|retlink:'207 1' }})
+                        no-repeat center center; background-size: cover;">
+                </div>
+                <div class="sl__slide" style="background: url({{ 1|retlink:'207 2' }})
+                        no-repeat center center; background-size: cover;">
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="img a203"
+         style="background: url({{ 1|retlink:'Приёмная директора' }}) no-repeat center center; background-size: cover; display: none;">
+        <div data-hint="Вернуться" id="a203_admins3" class="arrow hint--top hint--error">
+            <img src={% static 'tour/img/right-arrow.svg' %} alt="">
+        </div>
+        <div data-hint="Зам. директора (учеб. часть)" id="a203_a202" class="arrow hint--top hint--error">
+            <img src={% static 'tour/img/sun.svg' %} alt="">
+        </div>
+    </div>
+
+    <div class="overlay a202" style="visibility: hidden">
+        <div class="main a202-photo" style="visibility: hidden">
+            <div class="sl">
+                <div class="sl__slide" style="background: url({{ 1|retlink:'Зам. директора по учебной части' }})
+                        no-repeat center center; background-size: cover;">
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <div class="img a210"
+         style="background: url({{ 1|retlink:'210' }}) no-repeat center center; background-size: cover; display: none;">
+        <div data-hint="Награды" id="a210_awards" class="arrow hint--top hint--error">
+            <img src={% static 'tour/img/sun.svg' %} alt="">
+        </div>
+        <div data-hint="Выпускники" id="a210_graduates" class="arrow hint--top hint--error">
+            <img src={% static 'tour/img/sun.svg' %} alt="">
+        </div>
+        <div data-hint="Вперёд" id="a210_mey" class="arrow hint--top hint--error">
+            <img src={% static 'tour/img/up-arrow.svg' %} alt="">
+        </div>
+        <div data-hint="2 этаж" id="a210_second-floor" class="arrow hint--top hint--error">
+            <img src={% static 'tour/img/down-arrow.svg' %} alt="">
+        </div>
+    </div>
+
+    <div class="overlay awards" style="visibility: hidden">
+        <div class="main a210_awards" style="visibility: hidden">
+            <div class="sl">
+                <div class="sl__slide" style="background: url({{ 1|retlink:'Награды' }})
+                        no-repeat center center; background-size: cover;">
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="overlay graduates" style="visibility: hidden">
+        <div class="main a210_graduates" style="visibility: hidden">
+            <div class="sl">
+                <div class="sl__slide" style="background: url({{ 1|retlink:'Выпускники' }})
+                        no-repeat center center; background-size: cover;">
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="img mey"
+         style="background: url({{ 1|retlink:'МЭУ' }}) no-repeat center center; background-size: cover; display: none;">
+        <div data-hint="Сюда" id="mey_mey2" class="arrow hint--top hint--error">
+            <img src={% static 'tour/img/up-arrow.svg' %} alt="">
+        </div>
+        <div data-hint="Дальше" id="mey_mey3" class="arrow hint--top hint--error">
+            <img src={% static 'tour/img/up-arrow.svg' %} alt="">
+        </div>
+        <div data-hint="ТСО, 214 ауд., 213 ауд." id="mey_tso" class="arrow hint--top hint--error">
+            <img src={% static 'tour/img/right-arrow.svg' %} alt="">
+        </div>
+        <div data-hint="210 ауд." id="mey_a210" class="arrow hint--top hint--error">
+            <img src={% static 'tour/img/down-arrow.svg' %} alt="">
+        </div>
+    </div>
+
+    <div class="img mey2"
+         style="background: url({{ 1|retlink:'МЭУ 2' }}) no-repeat center center; background-size: cover; display: none;">
+        <div data-hint="215 ауд. и 216 ауд." id="mey2_a215-a216" class="pusto arrow hint--top hint--error">
+            <img src={% static 'tour/img/left-arrow.svg' %} alt="">
+        </div>
+        <div data-hint="Картины" id="mey2_pictures" class="arrow hint--top hint--error">
+            <img src={% static 'tour/img/sun.svg' %} alt="">
+        </div>
+        <div data-hint="Дальше" id="mey2_mey3" class="arrow hint--top hint--error">
+            <img src={% static 'tour/img/up-arrow.svg' %} alt="">
+        </div>
+        <div data-hint="Вернуться" id="mey2_mey" class="arrow hint--top hint--error">
+            <img src={% static 'tour/img/down-arrow.svg' %} alt="">
+        </div>
+    </div>
+
+    <div class="overlay meypictures" style="visibility: hidden">
+        <div class="main mey2_pictures" style="visibility: hidden">
+            <div class="sl">
+                <div class="sl__slide" style="background: url({{ 1|retlink:'МЭУ картина 1' }})
+                        no-repeat center center; background-size: cover;">
+                </div>
+                <div class="sl__slide" style="background: url({{ 1|retlink:'МЭУ картина 2' }})
+                        no-repeat center center; background-size: cover;">
+                </div>
+                <div class="sl__slide" style="background: url({{ 1|retlink:'МЭУ картина 3' }})
+                        no-repeat center center; background-size: cover;">
+                </div>
+                <div class="sl__slide" style="background: url({{ 1|retlink:'МЭУ картина 4' }})
+                        no-repeat center center; background-size: cover;">
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="img mey3"
+         style="background: url({{ 1|retlink:'МЭУ 3' }}) no-repeat center center; background-size: cover; display: none;">
+        <div data-hint="Вернуться" id="mey3_mey2" class="arrow hint--top hint--error">
+            <img src={% static 'tour/img/down-arrow.svg' %} alt="">
+        </div>
+        <div data-hint="Вернуться" id="mey3_mey" class="arrow hint--top hint--error">
+            <img src={% static 'tour/img/down-arrow.svg' %} alt="">
+        </div>
+        <div data-hint="Кафедра МЭУ" id="mey3_mey-kaf" class="pusto arrow hint--top hint--error">
+            <img src={% static 'tour/img/left-arrow.svg' %} alt="">
+        </div>
+        <div data-hint="Зав. кафедры МЭУ" id="mey3_mey-zav" class="arrow hint--top hint--error">
+            <img src={% static 'tour/img/sun.svg' %} alt="">
+        </div>
+        <div data-hint="Дальше" id="mey3_urists" class="arrow hint--top hint--error">
+            <img src={% static 'tour/img/right-arrow.svg' %} alt="">
+        </div>
+    </div>
+
+    <div class="overlay mey-zav" style="visibility: hidden">
+        <div class="main mey-zav-photo" style="visibility: hidden">
+            <div class="sl">
+                <div class="sl__slide" style="background: url({{ 1|retlink:'Зав. кафедры МЭУ' }})
+                        no-repeat center center; background-size: cover;">
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+    <div class="img tso"
+         style="background: url({{ 1|retlink:'Коридор ТСО' }}) no-repeat center center; background-size: cover; display: none;">
+        <div data-hint="Вернуться" id="tso_mey" class="arrow hint--top hint--error">
+            <img src={% static 'tour/img/down-arrow.svg' %} alt="">
+        </div>
+        <div data-hint="214 ауд." id="tso_a214" class="arrow hint--top hint--error">
+            <img src={% static 'tour/img/sun.svg' %} alt="">
+        </div>
+        <div data-hint="213 ауд." id="tso_a213" class="pusto arrow hint--top hint--error">
+            <img src={% static 'tour/img/right-arrow.svg' %} alt="">
+        </div>
+        <div data-hint="ТСО" id="tso_a212" class="arrow hint--top hint--error">
+            <img src={% static 'tour/img/left-arrow.svg' %} alt="">
+        </div>
+    </div>
+
+    <div class="overlay a214" style="visibility: hidden">
+        <div class="main a214-photo" style="visibility: hidden">
+            <div class="sl">
+                <div class="sl__slide" style="background: url({{ 1|retlink:'214 1' }})
+                        no-repeat center center; background-size: cover;">
+                </div>
+                <div class="sl__slide" style="background: url({{ 1|retlink:'214 2' }})
+                        no-repeat center center; background-size: cover;">
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="img a212"
+         style="background: url({{ 1|retlink:'ТСО' }}) no-repeat center center; background-size: cover; display: none;">
+        <div data-hint="Вернуться" id="a212_tso" class="arrow hint--top hint--error">
+            <img src={% static 'tour/img/down-arrow.svg' %} alt="">
+        </div>
+    </div>
+
+    <div class="img urists"
+         style="background: url({{ 1|retlink:'Коридор юристы' }}) no-repeat center center; background-size: cover; display: none;">
+        <div data-hint="Вернуться" id="urists_mey3" class="arrow hint--top hint--error">
+            <img src={% static 'tour/img/down-arrow.svg' %} alt="">
+        </div>
+        <div data-hint="Бухгалтерия" id="urists_accounting" class="arrow hint--top hint--error">
+            <img src={% static 'tour/img/right-arrow.svg' %} alt="">
+        </div>
+        <div data-hint="Пройти" id="urists_urists2" class="arrow hint--top hint--error">
+            <img src={% static 'tour/img/up-arrow.svg' %} alt="">
+        </div>
+        <div data-hint="Дальше" id="urists_psychologists" class="arrow hint--top hint--error">
+            <img src={% static 'tour/img/right-arrow.svg' %} alt="">
+        </div>
+        <div data-hint="Картины" id="urists_pictures" class="arrow hint--top hint--error">
+            <img src={% static 'tour/img/sun.svg' %} alt="">
+        </div>
+    </div>
+
+    <div class="img accounting"
+         style="background: url({{ 1|retlink:'Бухгалтерия' }}) no-repeat center center; background-size: cover; display: none;">
+        <div data-hint="Вернуться" id="accounting_urists" class="arrow hint--top hint--error">
+            <img src={% static 'tour/img/down-arrow.svg' %} alt="">
+        </div>
+    </div>
+
+    <div class="img urists2"
+         style="background: url({{ 1|retlink:'Коридор юристы 2' }}) no-repeat center center; background-size: cover; display: none;">
+        <div data-hint="Вернуться" id="urists2_urists" class="arrow hint--top hint--error">
+            <img src={% static 'tour/img/down-arrow.svg' %} alt="">
+        </div>
+        <div data-hint="222 ауд." id="urists2_a222" class="pusto arrow hint--top hint--error">
+            <img src={% static 'tour/img/left-arrow.svg' %} alt="">
+        </div>
+        <div data-hint="Кафедра права" id="urists2_urists-kaf" class="pusto arrow hint--top hint--error">
+            <img src={% static 'tour/img/left-arrow.svg' %} alt="">
+        </div>
+        <div data-hint="Дальше" id="urists2_psychologists" class="arrow hint--top hint--error">
+            <img src={% static 'tour/img/right-arrow.svg' %} alt="">
+        </div>
+        <div data-hint="Стенд" id="urists2_stand" class="arrow hint--top hint--error">
+            <img src={% static 'tour/img/sun.svg' %} alt="">
+        </div>
+
+    </div>
+
+    <div class="overlay stand" style="visibility: hidden">
+        <div class="main urists_stand" style="visibility: hidden">
+            <div class="sl">
+                <div class="sl__slide" style="background: url({{ 1|retlink:'Стэнд юристы' }})
+                        no-repeat center center; background-size: cover;">
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="overlay urispictures" style="visibility: hidden">
+        <div class="main urists_pictures" style="visibility: hidden">
+            <div class="sl">
+                <div class="sl__slide" style="background: url({{ 1|retlink:'Коридор юристы картина 1' }})
+                        no-repeat center center; background-size: cover;">
+                </div>
+                <div class="sl__slide" style="background: url({{ 1|retlink:'Коридор юристы картина 2' }})
+                        no-repeat center center; background-size: cover;">
+                </div>
+                <div class="sl__slide" style="background: url({{ 1|retlink:'Коридор юристы картина 3' }})
+                        no-repeat center center; background-size: cover;">
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="img psychologists"
+         style="background: url({{ 1|retlink:'Коридор психологи' }}) no-repeat center center; background-size: cover; display: none;">
+        <div data-hint="Вернуться" id="psychologists_urists2" class="arrow hint--top hint--error">
+            <img src={% static 'tour/img/down-arrow.svg' %} alt="">
+        </div>
+        <div data-hint="224 ауд." id="psychologists_a224" class="arrow hint--top hint--error">
+            <img src={% static 'tour/img/sun.svg' %} alt="">
+        </div>
+        <div data-hint="225 ауд. (конфрен. зал)" id="psychologists_a225" class="arrow hint--top hint--error">
+            <img src={% static 'tour/img/sun.svg' %} alt="">
+        </div>
+        <div data-hint="Дальше" id="psychologists_psychologists2" class="arrow hint--top hint--error">
+            <img src={% static 'tour/img/right-arrow.svg' %} alt="">
+        </div>
+    </div>
+
+    <div class="overlay a224" style="visibility: hidden">
+        <div class="main a224-photo" style="visibility: hidden">
+            <div class="sl">
+                <div class="sl__slide" style="background: url({{ 1|retlink:'224' }})
+                        no-repeat center center; background-size: cover;">
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="overlay a225" style="visibility: hidden">
+        <div class="main a225-photo" style="visibility: hidden">
+            <div class="sl">
+                <div class="sl__slide" style="background: url({{ 1|retlink:'225 1' }})
+                        no-repeat center center; background-size: cover;">
+                </div>
+                <div class="sl__slide" style="background: url({{ 1|retlink:'225 2' }})
+                        no-repeat center center; background-size: cover;">
+                </div>
+                <div class="sl__slide" style="background: url({{ 1|retlink:'225 3' }})
+                        no-repeat center center; background-size: cover;">
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="img psychologists2"
+         style="background: url({{ 1|retlink:'Коридор психологи 2' }}) no-repeat center center; background-size: cover; display: none;">
+        <div data-hint="Вернуться" id="psychologists2_psychologists" class="arrow hint--top hint--error">
+            <img src={% static 'tour/img/down-arrow.svg' %} alt="">
+        </div>
+        <div data-hint="227 ауд." id="psychologists2_a227" class="pusto arrow hint--top hint--error">
+            <img src={% static 'tour/img/left-arrow.svg' %} alt="">
+        </div>
+        <div data-hint="Перейти" id="psychologists2_psychologists3" class="arrow hint--top hint--error">
+            <img src={% static 'tour/img/up-arrow.svg' %} alt="">
+        </div>
+        <div data-hint="Студ. совет" id="psychologists2_a226" class="pusto arrow hint--top hint--error">
+            <img src={% static 'tour/img/right-arrow.svg' %} alt="">
+        </div>
+    </div>
+
+    <div class="img psychologists3"
+         style="background: url({{ 1|retlink:'Коридор психологи 3' }}) no-repeat center center; background-size: cover; display: none;">
+        <div data-hint="Вернуться" id="psychologists3_psychologists2" class="arrow hint--top hint--error">
+            <img src={% static 'tour/img/down-arrow.svg' %} alt="">
+        </div>
+        <div data-hint="Преподавательская" id="psychologists3_a228" class="pusto arrow hint--top hint--error">
+            <img src={% static 'tour/img/up-arrow.svg' %} alt="">
+        </div>
+        <div data-hint="Кафедра психологии" id="psychologists3_psyc-kaf" class="pusto arrow hint--top hint--error">
+            <img src={% static 'tour/img/left-arrow.svg' %} alt="">
+        </div>
+        <div data-hint="Зав. кафедры психологии" id="psychologists3_psyc-zav" class="pusto arrow hint--top hint--error">
+            <img src={% static 'tour/img/up-arrow.svg' %} alt="">
+        </div>
+        <div data-hint="Спуститься" id="psychologists3_first-floor" class="arrow hint--top hint--error">
+            <img src={% static 'tour/img/down-arrow.svg' %} alt="">
+        </div>
+    </div>
+
+    <div class="img first-floor"
+         style="background: url({{ 1|retlink:'1 этаж' }}) no-repeat center center; background-size: cover; display: none;">
+        <div data-hint="Вернуться" id="first-floor_psychologists3" class="arrow hint--top hint--error">
+            <img src={% static 'tour/img/down-arrow.svg' %} alt="">
+        </div>
+        <div data-hint="Лыжная база" id="first-floor_skiing" class="pusto arrow hint--top hint--error">
+            <img src={% static 'tour/img/left-arrow.svg' %} alt="">
+        </div>
+        <div data-hint="Пройти" id="first-floor_near-gym" class="arrow hint--top hint--error">
+            <img src={% static 'tour/img/up-arrow.svg' %} alt="">
+        </div>
+    </div>
+
+    <div class="img near-gym"
+         style="background: url({{ 1|retlink:'Около тренажерного зала' }}) no-repeat center center; background-size: cover; display: none;">
+        <div data-hint="Вернуться" id="near-gym_first-floor" class="arrow hint--top hint--error">
+            <img src={% static 'tour/img/down-arrow.svg' %} alt="">
+        </div>
+        <div data-hint="Раздевалка" id="near-gym_cloakroom" class="pusto arrow hint--top hint--error">
+            <img src={% static 'tour/img/down-arrow.svg' %} alt="">
+        </div>
+        <div data-hint="Тренажерный зал" id="near-gym_gym" class="arrow hint--top hint--error">
+            <img src={% static 'tour/img/sun.svg' %} alt="">
+        </div>
+        <div data-hint="Пройти" id="near-gym_near-court" class="arrow hint--top hint--error">
+            <img src={% static 'tour/img/up-arrow.svg' %} alt="">
+        </div>
+        <div data-hint="Повернуть" id="near-gym_near-itally" class="arrow hint--top hint--error">
+            <img src={% static 'tour/img/left-arrow.svg' %} alt="">
+        </div>
+    </div>
+
+    <div class="overlay gym" style="visibility: hidden">
+        <div class="main gym-photo" style="visibility: hidden">
+            <div class="sl">
+                <div class="sl__slide" style="background: url({{ 1|retlink:'Тренажерный зал 1' }})
+                        no-repeat center center; background-size: cover;">
+                </div>
+                <div class="sl__slide" style="background: url({{ 1|retlink:'Тренажерный зал 2' }})
+                        no-repeat center center; background-size: cover;">
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="img near-court"
+         style="background: url({{ 1|retlink:'Около суд. зала' }}) no-repeat center center; background-size: cover; display: none;">
+        <div data-hint="Вернуться" id="near-court_near-gym" class="arrow hint--top hint--error">
+            <img src={% static 'tour/img/down-arrow.svg' %} alt="">
+        </div>
+        <div data-hint="Тенисный зал" id="near-court_table-tennis" class="arrow hint--top hint--error">
+            <img src={% static 'tour/img/sun.svg' %} alt="">
+        </div>
+        <div data-hint="Зап. выход" id="near-court_exit3" class="pusto arrow hint--top hint--error">
+            <img src={% static 'tour/img/up-arrow.svg' %} alt="">
+        </div>
+        <div data-hint="Судебный зал" id="near-court_court" class="arrow hint--top hint--error">
+            <img src={% static 'tour/img/sun.svg' %} alt="">
+        </div>
+        <div data-hint="Повернуть" id="near-court_near-itally" class="arrow hint--top hint--error">
+            <img src={% static 'tour/img/left-arrow.svg' %} alt="">
+        </div>
+    </div>
+
+    <div class="overlay court" style="visibility: hidden">
+        <div class="main court-photo" style="visibility: hidden">
+            <div class="sl">
+                <div class="sl__slide" style="background: url({{ 1|retlink:'Суд. зал 1' }})
+                        no-repeat center center; background-size: cover;">
+                </div>
+                <div class="sl__slide" style="background: url({{ 1|retlink:'Суд. зал 2' }})
+                        no-repeat center center; background-size: cover;">
+                </div>
+                <div class="sl__slide" style="background: url({{ 1|retlink:'Суд. зал 3' }})
+                        no-repeat center center; background-size: cover;">
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="overlay table-tennis" style="visibility: hidden">
+        <div class="main table-tennis-photo" style="visibility: hidden">
+            <div class="sl">
+                <div class="sl__slide" style="background: url({{ 1|retlink:'Теннисный зал' }})
+                        no-repeat center center; background-size: cover;">
+                </div>
+        </div>
+    </div>
+
+
+    <div class="img near-itally"
+         style="background: url({{ 1|retlink:'Около итал. дворика' }}) no-repeat center center; background-size: cover; display: none;">
+        <div data-hint="Вернуться" id="near-itally_near-gym" class="arrow hint--top hint--error">
+            <img src={% static 'tour/img/down-arrow.svg' %} alt="">
+        </div>
+        <div data-hint="Вернуться" id="near-itally_near-court" class="arrow hint--top hint--error">
+            <img src={% static 'tour/img/down-arrow.svg' %} alt="">
+        </div>
+    </div>
+
+
+</section>
+
+</body>
+</html>

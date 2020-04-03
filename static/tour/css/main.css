@@ -1,0 +1,812 @@
+body {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    -webkit-font-smoothing: antialiased;
+    background-color: #aaa;
+    -ms-user-select: none;
+    -moz-user-select: none;
+    -khtml-user-select: none;
+    -webkit-user-select: none;
+}
+
+*,
+*:before,
+*:after {
+    box-sizing: border-box;
+}
+
+/*Menu*/
+
+.menu {
+    position: fixed;
+    right: 10px;
+    top: 10px;
+    z-index: 60;
+    display: none;
+}
+
+ul {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+
+ul li {
+    background-color: #9b2d30;
+    width: 250px;
+    height: 40px;
+    line-height: 40px;
+    text-align: center;
+    font-size: 20px;
+    color: #fff;
+    border-radius: 5px;
+
+}
+
+ul li ul li a {
+    padding: 0 30px;
+    text-decoration: none;
+    color: #fff;
+}
+
+ul li ul li {
+    display: none;
+    opacity: 0.6;
+    border-bottom: solid #fdff 1px;
+    transition: all .1s ease;
+}
+
+ul li ul li:hover {
+    background-color: #9b2d30;
+    opacity: 0.99;
+}
+
+ul li:hover ul li {
+    display: block;
+}
+
+/*Анимация кнопки***************/
+
+.fix, .overlay {
+    left: 0;
+    top: 0;
+    z-index: 50;
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.7);
+}
+
+.start {
+    position: absolute;
+    left: 45%;
+    top: 45%;
+}
+
+.btn {
+    display: inline-block;
+    padding: 20px 40px;
+    border-radius: 4px;
+    box-shadow: 0 0 10px 5px rgba(255, 255, 255, 0.3);
+    background-color: #9b2d30;
+    color: #fff;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    cursor: pointer;
+    margin: auto;
+    text-decoration: none;
+    transition: background-color 0.1s linear;
+}
+
+.btn:hover {
+    background-color: #d63031;
+}
+
+
+/* Картинки ***************/
+
+.container {
+    width: 100%;
+    height: 100vh;
+    background-color: #aaa;
+    overflow: hidden;
+}
+
+.img {
+    width: 100%;
+    height: 100%;
+}
+
+.street-all {
+    display: block;
+}
+
+.arrow {
+    position: absolute;
+    padding: 3px;
+    width: 40px;
+    height: 40px;
+    background-color: #fff;
+    border-radius: 50%;
+    cursor: pointer;
+    transition: 0.1s linear;
+    display: none;
+    opacity: 0.45;
+}
+
+.arrow:hover {
+    /*background-color: #d63031;*/
+    transform: scale(1.2);
+    opacity: 1;
+
+}
+
+.pusto {
+    background-color: #A60000;
+}
+
+
+.main {
+    position: absolute;
+    left: 15%;
+    top: 10%;
+    width: 70%;
+    max-width: 1400px;
+    z-index: 55;
+}
+
+
+.slick-arrow {
+    width: 40px;
+    height: 800px;
+    z-index: 999;
+}
+
+.slick-prev:before {
+    content: '';
+
+}
+
+.slick-prev {
+    left: 0px;
+    background: url(../img/left-arrow.svg) no-repeat center center;
+    background-color: #fff;
+    opacity: 0.5;
+    transition: all 0.3s ease;
+}
+
+.slick-prev:hover {
+    opacity: 1;
+}
+
+.slick-next:before {
+    content: '';
+}
+
+.slick-next {
+    right: 0px;
+    background: url(../img/right-arrow.svg) no-repeat center center;
+    background-color: #fff;
+    opacity: 0.5;
+    transition: all 0.3s ease;
+}
+
+.slick-next:hover {
+    opacity: 1;
+}
+
+
+.sl__slide {
+    width: 1100px;
+    height: 800px;
+}
+
+
+.monum {
+    width: 50%;
+    height: auto;
+}
+
+
+/* Стрелки ***************/
+.close {
+    text-align: center;
+    padding-top: 6px;
+    top: 7%;
+    right: 7%;
+}
+
+#street-all_street-library {
+    top: 50%;
+    left: 25%;
+}
+
+#street-library_library-coridor-1 {
+    top: 56%;
+    left: 36%;
+}
+
+#library-coridor-1_street-library {
+    right: 20%;
+    top: 50%;
+}
+
+#library-coridor-1_library-coridor-2 {
+    left: 50%;
+    top: 50%;
+}
+
+#library-coridor-2_library-coridor-1 {
+    bottom: 5%;
+    left: 50%;
+}
+
+#library-coridor-2_library {
+    right: 22%;
+    top: 44%;
+}
+
+#library-coridor-2_a6 {
+    left: 25%;
+    top: 50%;
+}
+
+#street-library_street-all {
+    top: 70%;
+    left: 15%;
+}
+
+#street-all_street_entry {
+    top: 51%;
+    left: 50%;
+}
+
+#street_entry_street-all {
+    bottom: 7%;
+    left: 60%;
+}
+
+#street-library_street_entry {
+    right: 20%;
+    top: 65%;
+}
+
+#street_entry_street-library {
+    bottom: 7%;
+    left: 40%;
+}
+
+#street_entry_watch {
+    bottom: 10%;
+    left: 50%;
+}
+
+#watch_street_entry {
+    bottom: 10%;
+    left: 50%;
+}
+
+#street-all_monument {
+    left: 5%;
+    top: 50%;
+}
+
+#monument_street-all {
+    z-index: 2;
+    top: 2%;
+    right: 26%;
+}
+
+#watch_assembly-hall {
+    right: 5%;
+    top: 60%;
+}
+
+#watch_hallway {
+    left: 5%;
+    top: 60%;
+}
+
+#watch_second-floor {
+    top: 25%;
+    right: 34%;
+}
+
+#assembly-hall_watch {
+    right: 50%;
+    bottom: 5%;
+}
+
+#assembly-hall_hall2 {
+    top: 40%;
+    right: 10%;
+}
+
+#assembly-hall_a102-2 {
+    top: 45%;
+    left: 6%;
+}
+
+#hallway_kitchen {
+    top: 54%;
+    left: 16%;
+}
+
+#hallway_wardrobe {
+    top: 52%;
+    right: 53%;
+}
+
+#hallway_restroom-woomen {
+    top: 50%;
+    right: 36%;
+}
+
+#hallway_restroom-men {
+    top: 50%;
+    right: 7%;
+}
+
+#hallway_watch {
+    right: 5%;
+    bottom: 20%;
+}
+
+#hallway_poster {
+    right: 25%;
+    top: 25%;
+}
+
+#second-floor_admmins {
+    left: 20%;
+    top: 50%;
+}
+
+#second-floor_watch {
+    right: 50%;
+    bottom: 5%;
+}
+
+#second-floor_a210 {
+    right: 20%;
+    top: 50%;
+}
+
+#admins_a206 {
+    left: 19%;
+    top: 50%;
+}
+
+#admins_admins2 {
+    left: 38%;
+    top: 54%;
+}
+
+#admins_flowers {
+    right: 18%;
+    top: 66%;
+}
+
+#admins_second-floor {
+    right: 50%;
+    bottom: 5%;
+}
+
+#flowers_admins {
+    right: 50%;
+    bottom: 5%;
+}
+
+#admins2_admins {
+    bottom: 5%;
+    right: 47%;
+}
+
+#admins2_link {
+    left: 19%;
+    top: 39%;
+}
+
+#admins2_a209 {
+    right: 18%;
+    top: 60%;
+}
+
+#admins2_a101-a102 {
+    top: 50%;
+    left: 41%;
+}
+
+#admins2_a205 {
+    top: 50%;
+    left: 36%;
+}
+
+#admins2_a208 {
+    right: 38%;
+    top: 50%;
+}
+
+#admins2_admins3 {
+    top: 59%;
+    right: 47%;
+}
+
+#admins3_admins2 {
+    bottom: 5%;
+    right: 40%;
+}
+
+#admins3_a204 {
+    left: 26%;
+    top: 51%;
+}
+
+#admins3_a207 {
+    right: 15%;
+    top: 51%;
+}
+
+#admins3_a203 {
+    left: 62%;
+    top: 51%;
+}
+
+#a203_admins3 {
+    right: 7%;
+    bottom: 7%;
+}
+
+#a203_a202 {
+    right: 7%;
+    top: 25%;
+}
+
+#a101-a102_admins2 {
+    top: 5%;
+    right: 50%;
+}
+
+#a101-a102_a101 {
+    right: 30%;
+    top: 50%;
+}
+
+#a101-a102_a102-1 {
+    left: 35%;
+    top: 50%;
+}
+
+#a102-1_a101-a102 {
+    left: 50%;
+    bottom: 5%;
+}
+
+#a102-1_assembly-hall {
+    left: 47%;
+    bottom: 47%;
+}
+
+#a102-2_assembly-hall {
+    right: 7%;
+    top: 50%;
+}
+
+#a102-2_a101-a102 {
+    right: 45%;
+    top: 50%;
+}
+
+#a210_admins3 {
+    left: 5%;
+    bottom: 5%;
+}
+
+#a210_awards {
+    top: 40%;
+    left: 26%;
+}
+
+#a210_graduates {
+    top: 40%;
+    right: 31%;
+}
+
+#a210_mey {
+    top: 50%;
+    right: 40%;
+}
+
+#a210_second-floor {
+    bottom: 5%;
+    right: 50%;
+}
+
+#mey_a210 {
+    bottom: 5%;
+    right: 50%;
+}
+
+#mey_tso {
+    top: 50%;
+    right: 7%;
+}
+
+#mey_mey2 {
+    top: 63%;
+    right: 42%;
+}
+
+#mey_mey3 {
+    top: 48%;
+    left: 26%;
+}
+
+#mey2_mey {
+    bottom: 5%;
+    right: 50%;
+}
+
+#mey2_a215-a216 {
+    top: 35%;
+    left: 50%;
+}
+
+#mey2_mey3 {
+    top: 50%;
+    right: 27%;
+}
+
+
+#mey2_pictures {
+    top: 12%;
+    left: 27%;
+}
+
+#mey3_mey2 {
+    bottom: 5%;
+    right: 45%;
+}
+
+#mey3_mey {
+    bottom: 5%;
+    right: 55%;
+}
+
+#tso_mey {
+    bottom: 5%;
+    right: 50%;
+}
+
+#tso_a214 {
+    right: 34%;
+    top: 50%;
+}
+
+#tso_a213 {
+    right: 38%;
+    top: 40%;
+}
+
+#tso_a212 {
+    top: 40%;
+    right: 43%;
+}
+
+#a212_tso {
+    bottom: 5%;
+    right: 50%;
+}
+
+#mey3_mey-zav {
+    right: 20%;
+    top: 50%;
+}
+
+#mey3_mey-kaf {
+    top: 38%;
+    left: 42%;
+}
+
+#mey3_urists {
+    right: 42%;
+    top: 50%;
+}
+
+#urists_mey3 {
+    bottom: 5%;
+    right: 50%;
+}
+
+#urists_accounting {
+    right: 10%;
+    top: 50%;
+}
+
+#accounting_urists {
+    bottom: 5%;
+    right: 50%;
+}
+
+#urists_urists2 {
+    left: 40%;
+    top: 41%;
+}
+
+#urists_psychologists {
+    left: 36%;
+    top: 21%;
+}
+
+#urists_pictures {
+    right: 35%;
+    top: 21%;
+}
+
+#urists2_urists {
+    bottom: 5%;
+    right: 50%;
+}
+
+#urists2_urists-kaf {
+    left: 53%;
+    top: 50%;
+}
+
+#urists2_a222 {
+    left: 20%;
+    top: 50%;
+}
+
+#urists2_stand {
+    left: 61%;
+    top: 45%;
+}
+
+
+#urists2_psychologists {
+    right: 15%;
+    top: 50%;
+}
+
+#psychologists_urists2 {
+    bottom: 5%;
+    right: 50%;
+}
+
+#psychologists_a224 {
+    left: 20%;
+    top: 50%;
+}
+
+#psychologists_a225 {
+    right: 17%;
+    top: 40%;
+}
+
+#psychologists_psychologists2 {
+    right: 10%;
+    top: 50%;
+}
+
+#psychologists2_psychologists {
+    bottom: 5%;
+    right: 50%;
+}
+
+#psychologists2_a227 {
+    left: 17%;
+    top: 50%;
+}
+
+#psychologists2_a226 {
+    right: 18%;
+    top: 59%;
+}
+
+#psychologists2_psychologists3 {
+    right: 50%;
+    top: 72%;
+}
+
+#psychologists3_psychologists2 {
+    bottom: 5%;
+    right: 50%;
+}
+
+#psychologists3_a228 {
+    left: 21%;
+    top: 50%;
+}
+
+#psychologists3_psyc-kaf {
+    right: 43%;
+    top: 37%;
+}
+
+#psychologists3_psyc-zav {
+    right: 27%;
+    top: 48%;
+}
+
+#psychologists3_first-floor {
+    right: 13%;
+    top: 81%;
+}
+
+#first-floor_psychologists3 {
+    bottom: 5%;
+    right: 50%;
+}
+
+#first-floor_skiing {
+    left: 17%;
+    top: 74%;
+}
+
+#first-floor_near-gym {
+    right: 42%;
+    top: 55%;
+}
+
+#near-gym_first-floor {
+    bottom: 5%;
+    right: 50%;
+}
+
+#near-gym_gym {
+    right: 16%;
+    top: 55%;
+}
+
+#near-gym_cloakroom {
+    left: 39%;
+    top: 74%;
+}
+
+#near-gym_near-court {
+    left: 19%;
+    top: 58%;
+}
+
+#near-gym_near-itally {
+    left: 12%;
+    top: 44%;
+}
+
+#near-court_near-gym {
+    bottom: 5%;
+    right: 50%;
+}
+
+#near-court_court {
+    left: 19%;
+    top: 58%;
+}
+
+#near-court_exit3 {
+    right: 16%;
+    top: 55%;
+}
+
+#near-court_table-tennis {
+    right: 4%;
+    top: 56%;
+}
+
+#near-court_near-itally {
+    left: 5%;
+    top: 46%;
+}
+
+#near-itally_near-court {
+    bottom: 5%;
+    right: 45%;
+}
+
+#near-itally_near-gym {
+    bottom: 5%;
+    right: 55%;
+}
