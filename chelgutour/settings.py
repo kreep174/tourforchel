@@ -25,7 +25,7 @@ SECRET_KEY = os.environ.get('DJANGO_SECRET_KEY', 'w94t43@1c5ru7f8kxok3dfpyhwt4a*
 # SECURITY WARNING: don't run with debug turned on in production!
 # DEBUG = True
 DEBUG = bool( os.environ.get('DJANGO_DEBUG', True) )
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = [warm-garden-01424.herokuapp.com]
 
 
 # Application definition
